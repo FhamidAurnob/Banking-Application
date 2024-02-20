@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="752e3cf1-8df4-48fb-adeb-95ed31b5f977">
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     account.`ACCOUNT_NUMBER` AS account_ACCOUNT_NUMBER,
+     account.`ACCOUNT_TYPE` AS account_ACCOUNT_TYPE,
+     account.`ACCOUNT_BALANCE` AS account_ACCOUNT_BALANCE,
+     account.`DATE` AS account_DATE,
+     client.`ACCOUNT_NUMBER` AS client_ACCOUNT_NUMBER,
+     client.`NAME` AS client_NAME,
+     client.`IDCARD` AS client_IDCARD,
+     client.`DOB` AS client_DOB,
+     client.`ADDRESS` AS client_ADDRESS,
+     client.`PHONE` AS client_PHONE,
+     client.`FATHERNAME` AS client_FATHERNAME,
+     client.`MOTHERNAME` AS client_MOTHERNAME,
+     client.`STATUS` AS client_STATUS,
+     client.`GENDER` AS client_GENDER,
+     client.`DATE` AS client_DATE,
+     deposit.`FROMIDCARD` AS deposit_FROMIDCARD,
+     deposit.`TOACCOUNTNUMBER` AS deposit_TOACCOUNTNUMBER,
+     deposit.`DEPOSITAMOUNT` AS deposit_DEPOSITAMOUNT,
+     deposit.`OLDBALANCE` AS deposit_OLDBALANCE,
+     deposit.`NEWBALANCE` AS deposit_NEWBALANCE,
+     deposit.`OPERATION` AS deposit_OPERATION,
+     deposit.`DATE` AS deposit_DATE,
+     withdraw.`CLIENTIDCARD` AS withdraw_CLIENTIDCARD,
+     withdraw.`CLIENTACCOUNTNUMBER` AS withdraw_CLIENTACCOUNTNUMBER,
+     withdraw.`WITHDRAWAMOUNT` AS withdraw_WITHDRAWAMOUNT,
+     withdraw.`OLDBALANCE` AS withdraw_OLDBALANCE,
+     withdraw.`NEWBALANCE` AS withdraw_NEWBALANCE,
+     withdraw.`OPERATION` AS withdraw_OPERATION,
+     withdraw.`DATE` AS withdraw_DATE,
+     user.`ID` AS user_ID,
+     user.`NAME` AS user_NAME,
+     user.`DOB` AS user_DOB,
+     user.`ADDRESS` AS user_ADDRESS,
+     user.`PHONE` AS user_PHONE,
+     user.`TYPE` AS user_TYPE,
+     user.`SALARY` AS user_SALARY,
+     transferorder.`TRANSFORMER_NAME` AS transferorder_TRANSFORMER_NAME,
+     transferorder.`TRANSFORMER_IDCARD` AS transferorder_TRANSFORMER_IDCARD,
+     transferorder.`RECEIVER_NAME` AS transferorder_RECEIVER_NAME,
+     transferorder.`RECEIVER_IDCARD` AS transferorder_RECEIVER_IDCARD,
+     transferorder.`TRANSFER_AMOUNT` AS transferorder_TRANSFER_AMOUNT,
+     transferorder.`DATE` AS transferorder_DATE,
+     transfer.`FROMIDCARD` AS transfer_FROMIDCARD,
+     transfer.`FROMACCOUNTNUMBER` AS transfer_FROMACCOUNTNUMBER,
+     transfer.`TOACCOUNTNUMBER` AS transfer_TOACCOUNTNUMBER,
+     transfer.`TRANSFERAMOUNT` AS transfer_TRANSFERAMOUNT,
+     transfer.`FROMOLDBALANCE` AS transfer_FROMOLDBALANCE,
+     transfer.`FROMNEWBALANCE` AS transfer_FROMNEWBALANCE,
+     transfer.`TOOLDBALANCE` AS transfer_TOOLDBALANCE,
+     transfer.`TONEWBALANCE` AS transfer_TONEWBALANCE,
+     transfer.`BRANSH` AS transfer_BRANSH,
+     transfer.`OPERATION` AS transfer_OPERATION,
+     transfer.`DATE` AS transfer_DATE,
+     op.`FROMIDCARD` AS op_FROMIDCARD,
+     op.`FROMACCOUNTNUMBER` AS op_FROMACCOUNTNUMBER,
+     op.`TOACCOUNTNUMBER` AS op_TOACCOUNTNUMBER,
+     op.`OPERATION` AS op_OPERATION,
+     op.`AMOUNT` AS op_AMOUNT,
+     op.`FROMOLDBALANCE` AS op_FROMOLDBALANCE,
+     op.`FROMNEWBALANCE` AS op_FROMNEWBALANCE,
+     op.`TOOLDBALANCE` AS op_TOOLDBALANCE,
+     op.`TONEWBALANCE` AS op_TONEWBALANCE,
+     op.`BRANSH` AS op_BRANSH,
+     op.`DATE` AS op_DATE
+FROM
+     `account` account,
+     `client` client,
+     `deposit` deposit,
+     `withdraw` withdraw,
+     `user` user,
+     `transferorder` transferorder,
+     `transfer` transfer,
+     `op` op]]>
+	</queryString>
+	<field name="account_ACCOUNT_NUMBER" class="java.lang.String"/>
+	<field name="account_ACCOUNT_TYPE" class="java.lang.String"/>
+	<field name="account_ACCOUNT_BALANCE" class="java.lang.Double"/>
+	<field name="account_DATE" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="102" splitType="Stretch">
+			<image>
+				<reportElement x="725" y="0" width="77" height="102" uuid="3e11a447-a153-4e1b-ad27-29d4b2b6280b"/>
+				<imageExpression><![CDATA["cherry.jpg"]]></imageExpression>
+			</image>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="721" height="66" backcolor="#000000" uuid="b321452f-8416-4c94-a05c-9f563d5eef90"/>
+				<staticText>
+					<reportElement style="Title" x="0" y="0" width="370" height="66" uuid="aac24cab-4006-4ed8-8b42-e36214ebffb7"/>
+					<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
+					<textElement verticalAlignment="Bottom">
+						<font isBold="false"/>
+					</textElement>
+					<text><![CDATA[Cherry Title]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="SubTitle" x="370" y="37" width="316" height="29" uuid="ea16d133-bf06-4a37-819e-8991c10c90fe"/>
+					<textElement textAlignment="Right">
+						<font size="22" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Cherry SubTitle]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="70" width="721" height="32" forecolor="#000000" backcolor="#CC0000" uuid="bbe0c13e-81c8-4f8b-b1e3-1222a7737dec"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="553" y="12" width="144" height="20" forecolor="#FFFFFF" uuid="0fd8ac57-e361-4331-8d33-25323d117999"/>
+					<textElement textAlignment="Right">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="18" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="199" height="18" forecolor="#000000" uuid="0b593ab9-e266-43bf-b32c-7d19a28d1341"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[account_ACCOUNT_NUMBER]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="199" y="0" width="199" height="18" forecolor="#000000" uuid="473ef5cb-1398-4307-bfbb-97b171bd9723"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[account_ACCOUNT_TYPE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="398" y="0" width="199" height="18" forecolor="#000000" uuid="7e52fa17-535d-4f4a-a6c8-69ae81fe82ad"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[account_ACCOUNT_BALANCE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="597" y="0" width="199" height="18" forecolor="#000000" uuid="75032ad4-24bd-4276-8013-e8959af3443a"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[account_DATE]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="797" height="18" uuid="a26b766d-62f0-4895-a21c-a40bab2ced59"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="0" y="0" width="199" height="18" uuid="6a3eed98-bd4b-4774-9e3a-322591100ae2"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{account_ACCOUNT_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="199" y="0" width="199" height="18" uuid="c0c4066b-4bf9-47c9-bea8-543c45c72aa9"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{account_ACCOUNT_TYPE}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="398" y="0" width="199" height="18" uuid="ad955407-ae35-46bf-a057-fb11dbcef389"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{account_ACCOUNT_BALANCE}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="597" y="0" width="199" height="18" uuid="01cde8f2-370a-43db-b3bb-9dc0638db0e5"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{account_DATE}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="5b2746f9-7136-4ccf-afb1-b15d5c59987d"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="802" height="25" forecolor="#D0B48E" backcolor="#000000" uuid="625132e1-a3aa-4f49-bd82-41cb6c50af2b"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="757" y="3" width="40" height="20" forecolor="#FFFFFF" uuid="98a5f0c9-a65d-4cef-8549-62c36c689e28"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="677" y="3" width="80" height="20" forecolor="#FFFFFF" uuid="fa6d887e-d999-4d25-8bba-493fac122b39"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="3" width="197" height="20" forecolor="#FFFFFF" uuid="d09cfe0d-c6bd-4953-8c94-a6d1fbfbba24"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
